@@ -32,6 +32,8 @@ public class App {
         if(matcher.find()){
             String simplified = "result: " + matcher.replaceFirst("$1/$2");
             System.out.println(simplified); 
+            int result = Integer.valueOf(matcher.group(1))/Integer.valueOf(matcher.group(2));
+            System.out.println("result = " + result);
         }
     }
 }
