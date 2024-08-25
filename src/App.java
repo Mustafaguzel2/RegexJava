@@ -5,8 +5,8 @@ public class App {
 
     public static void main(String[] args) {
         
-        Pattern pattern = Pattern.compile("^\\w* \\d{3,5}$");
-        Matcher matcher = pattern.matcher("agent 0214");
+        Pattern pattern = Pattern.compile("^(\\d+) divided by (\\d+)$");
+        Matcher matcher = pattern.matcher("10 divided by 2");
         /* 1. \\d{}bu bize sınırsız digit girme sağlar ve match eder 
          * 2. ^ eğer bu işaret başında olursa ve $ bu işarette sonunda olursa
          * sadece bizim yazdığımız regex şekli true döner ancak başında
@@ -29,8 +29,9 @@ public class App {
          * 
         */
 
-        boolean found = matcher.find();
-
-        System.out.println("found: " + found);
+        if(matcher.find()){
+            String simplified = "result: " + matcher.replaceFirst("$1/$2");
+            System.out.println(simplified); 
+        }
     }
 }
